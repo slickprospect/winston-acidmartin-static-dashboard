@@ -1,0 +1,136 @@
+{
+  "bundle_id": "winston-mini-scalp-lab-2026-06-08.fixture.v1",
+  "generated_at": "2026-06-08T17:42:00-04:00",
+  "fixture_only": true,
+  "overall_freshness_state": "fresh",
+  "authority_boundary": "research_only_read_only_no_trade_authority",
+  "categories": [
+    {
+      "category": "account_snapshot",
+      "mode": "historical_screenshot_fixture",
+      "latest_timestamp": "2026-06-08T17:39:31-04:00",
+      "freshness_state": "fresh",
+      "source": "fixture://snapshot/account-read-only",
+      "limitation": "Static screenshot/account fixture; not sourced from Winston Ops, Agent Manager, Hyperliquid, or a live account root."
+    },
+    {
+      "category": "static_market_headlines",
+      "mode": "static_headline_fixture",
+      "latest_timestamp": "2026-06-11T00:00:00-04:00",
+      "freshness_state": "fresh",
+      "source": "fixture://winston/static-market-headlines",
+      "limitation": "Static headline fixture only; no live news API, RSS feed, web fetch, connector, or runtime root is connected."
+    },
+    {
+      "category": "public_demo_command_deck",
+      "mode": "static_public_demo_hierarchy",
+      "latest_timestamp": "2026-06-11T00:00:00-04:00",
+      "freshness_state": "fresh",
+      "source": "fixture://winston/public-demo-command-deck",
+      "limitation": "First-screen hierarchy fixture only; does not read or mutate runtime state."
+    },
+    {
+      "category": "cycle_net_edge",
+      "mode": "static_cycle_reconstruction",
+      "latest_timestamp": "2026-06-08T17:35:00-04:00",
+      "freshness_state": "fresh",
+      "source": "fixture://winston/cycle-net-edge",
+      "limitation": "Cycle-level gross-to-net examples only; not fee-true, exchange-fill, or account-ledger proof."
+    },
+    {
+      "category": "fee_drag_churn_meter",
+      "mode": "static_fee_drag_churn_fixture",
+      "latest_timestamp": "2026-06-08T17:36:18-04:00",
+      "freshness_state": "fresh",
+      "source": "fixture://winston/fee-drag-churn-meter",
+      "limitation": "Static warning meter only; no live fee, fill, funding, account, or runtime source is wired."
+    },
+    {
+      "category": "backtest_window",
+      "mode": "backtest",
+      "latest_timestamp": "2026-06-08T17:35:00-04:00",
+      "freshness_state": "fresh",
+      "source": "fixture://backtest/run-mini-scalp-v03",
+      "limitation": "Mock backtest metrics; no real backtest artifact was parsed."
+    },
+    {
+      "category": "positions",
+      "mode": "mixed_fixture_evidence",
+      "latest_timestamp": "2026-06-08T17:39:31-04:00",
+      "freshness_state": "fresh",
+      "source": "fixture://positions/current-and-sim",
+      "limitation": "Mock positions; stop authority and liquidation distance are display examples only."
+    },
+    {
+      "category": "trades_and_detectors",
+      "mode": "backtest_replay_simulation_read_only_fixture",
+      "latest_timestamp": "2026-06-08T17:28:04-04:00",
+      "freshness_state": "fresh",
+      "source": "fixture://trade-detector",
+      "limitation": "Mock trade tape and detector flags; not current trading evidence."
+    },
+    {
+      "category": "runtime_state",
+      "mode": "read_only_runtime_state_fixture",
+      "latest_timestamp": "2026-06-08T17:38:44-04:00",
+      "freshness_state": "fresh",
+      "source": "fixture://runtime-state",
+      "limitation": "Display-only disabled states; no arm/disarm/autopilot system was read or changed."
+    },
+    {
+      "category": "offline_replay_input_v1",
+      "mode": "offline_static_bundle_only",
+      "latest_timestamp": "2026-06-09T00:00:00-04:00",
+      "freshness_state": "fresh",
+      "source": "./winston_mini_scalp_lab_replay_input_v1_2026-06-09.json",
+      "limitation": "Copied screenshot-derived fixture only; no source root is wired and no live artifact is parsed."
+    },
+    {
+      "category": "offline_replay_backtest_v0",
+      "mode": "offline_static_bundle_only",
+      "latest_timestamp": "2026-06-09T00:00:00-04:00",
+      "freshness_state": "fresh",
+      "source": "./winston_mini_scalp_lab_replay_backtest_v0_2026-06-09.json",
+      "limitation": "Copied screenshot-derived replay/backtest fixture only; not fee-true, not net PnL proof, and no live artifact root is wired."
+    },
+    {
+      "category": "pair_memory_guard_contract_v0",
+      "mode": "offline_static_bundle_only",
+      "latest_timestamp": "2026-06-11T00:00:00-04:00",
+      "freshness_state": "fresh",
+      "source": "./mini_scalp_lane_pair_memory_guard_dashboard_telemetry_contract_v0_2026-06-11.json",
+      "limitation": "Copied research-only telemetry contract fixture. Not live, not a demo blocker, no runtime authority, and no lane/order system wiring."
+    },
+    {
+      "category": "winston_demo_relaunch_checklist",
+      "mode": "static_demo_relaunch_checklist",
+      "latest_timestamp": "2026-06-09T00:00:00-04:00",
+      "freshness_state": "fresh",
+      "source": "fixture://winston/demo-relaunch-checklist",
+      "limitation": "Static checklist only; deployment, DNS, live roots, collectors, connectors, runtime controls, and order systems remain unwired."
+    },
+    {
+      "category": "demo_readiness_gates",
+      "mode": "static_demo_readiness",
+      "latest_timestamp": "2026-06-11T00:00:00-04:00",
+      "freshness_state": "fresh",
+      "source": "fixture://winston/demo-readiness-gates",
+      "limitation": "Static readiness gates only; pass states do not authorize deployment or trading."
+    },
+    {
+      "category": "deployment_readiness_notes",
+      "mode": "future_deployment_planning_only",
+      "latest_timestamp": "2026-06-11T00:00:00-04:00",
+      "freshness_state": "fresh",
+      "source": "fixture://winston/deployment-readiness-notes",
+      "limitation": "Planning notes for future winston.acidmartin.com only; hosting and DNS were not configured."
+    }
+  ],
+  "conflicts": [],
+  "missing_live_sources_by_design": [
+    "Winston Ops artifact roots",
+    "Agent Manager runtime state",
+    "Hyperliquid connector state",
+    "live orders, leverage, thresholds, cadence, schedules, lane state, or launchd jobs"
+  ]
+}

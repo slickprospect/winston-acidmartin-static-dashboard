@@ -1,0 +1,312 @@
+{
+  "generated": "2026-06-11",
+  "project": "Winston Ops",
+  "scope": "research_only_no_runtime_change",
+  "source_inputs": {
+    "combined_oos_report": "/Users/mattlloyd/Desktop/winston-ops/artifacts/mini-scalp-lab/market-reconstruction-v0/combined-offline-l2-pair-memory-oos-v0/winston_combined_offline_l2_pair_memory_oos_validation_v0_2026-06-11.md",
+    "combined_oos_summary_json": "/Users/mattlloyd/Desktop/winston-ops/artifacts/mini-scalp-lab/market-reconstruction-v0/combined-offline-l2-pair-memory-oos-v0/combined_pair_memory_oos_summary_v0_2026-06-11.json",
+    "offline_feature_discovery_dir": "/Users/mattlloyd/Desktop/winston-ops/artifacts/mini-scalp-lab/offline-feature-discovery-v0/",
+    "offline_pair_memory_rule_simulation_dir": "/Users/mattlloyd/Desktop/winston-ops/artifacts/mini-scalp-lab/offline-pair-memory-rule-simulation-v0/"
+  },
+  "controls": {
+    "implementation_created": false,
+    "runtime_rule_created": false,
+    "thresholds_defined": false,
+    "trading_behavior_changed": false,
+    "strategy_changed": false,
+    "cadence_changed": false,
+    "leverage_changed": false,
+    "authority_changed": false,
+    "connectors_changed": false,
+    "schedules_changed": false,
+    "order_behavior_changed": false,
+    "runtime_controls_changed": false,
+    "lane_state_changed": false,
+    "collectors_run": false,
+    "hyperliquid_apis_called": false,
+    "private_keys_used": false,
+    "trading_or_demo_live_loop_enabled": false
+  },
+  "candidate_dispositions": [
+    {
+      "candidate_id": "pair_near_zero_memory_plus_book_guard",
+      "candidate_status": "research_only_survivor",
+      "plain_english": "Observe an asset+side pair when recent same-pair history shows near-zero close memory and negative pair context, with offline entry-book evidence that conditions were weaker than the good-scalp reference context.",
+      "not_a_runtime_rule": true,
+      "required_feature_groups": [
+        "pair_identity",
+        "pair_memory",
+        "near_zero_evidence",
+        "book_guard",
+        "quality_controls",
+        "outcome_validation"
+      ]
+    },
+    {
+      "candidate_id": "pair_toxic_memory_plus_book_guard",
+      "candidate_status": "research_only_survivor",
+      "plain_english": "Observe an asset+side pair when recent same-pair history shows toxic close memory such as churn-loss or fee-burn outcomes and negative pair context, with offline entry-book evidence that conditions were weaker than the good-scalp reference context.",
+      "not_a_runtime_rule": true,
+      "required_feature_groups": [
+        "pair_identity",
+        "pair_memory",
+        "toxic_evidence",
+        "book_guard",
+        "quality_controls",
+        "outcome_validation"
+      ]
+    },
+    {
+      "candidate_id": "pair_same_symbol_repetition_net_brake",
+      "candidate_status": "demoted_comparator",
+      "plain_english": "Historical comparator based on repeated same-symbol asset+side entries with negative pair context; demoted because expanded OOS validation showed high false-block risk.",
+      "not_a_runtime_rule": true,
+      "required_feature_groups": [
+        "pair_identity",
+        "same_symbol_repetition_memory",
+        "quality_controls",
+        "outcome_validation"
+      ]
+    }
+  ],
+  "feature_groups": {
+    "pair_identity": [
+      "asset",
+      "side",
+      "asset_side",
+      "entry_time_utc",
+      "exit_time_utc"
+    ],
+    "pair_memory": [
+      "prior_pair_net_pnl_15m",
+      "prior_pair_net_pnl_30m",
+      "prior closed-cycle history keyed by asset_side"
+    ],
+    "near_zero_evidence": [
+      "prior_pair_near_zero_cluster_count_15m",
+      "near_zero_cycle",
+      "net_bps",
+      "gross_pnl_usdc",
+      "net_pnl_usdc",
+      "fees_usdc",
+      "label provenance"
+    ],
+    "toxic_evidence": [
+      "prior_pair_toxic_count_15m",
+      "prior_pair_fee_burn_count_15m",
+      "prior_pair_churn_loss_count_15m",
+      "fee_burn_cycle",
+      "bad_churn_cycle",
+      "label provenance"
+    ],
+    "same_symbol_repetition_memory": [
+      "prior_same_symbol_repetition_5m",
+      "prior_same_symbol_repetition_15m",
+      "prior_pair_net_pnl_15m"
+    ],
+    "book_guard": [
+      "entry_book_join_success",
+      "entry_spread_bps",
+      "entry_top_of_book_depth_notional_usdc",
+      "entry_l2_join_source_window_id",
+      "entry_nearest_gap_ms",
+      "entry_asof_gap_ms"
+    ],
+    "quality_controls": [
+      "pairing_confidence",
+      "uncertain_pairing",
+      "l2_join_quality_state",
+      "validation_corpus_id",
+      "window_id"
+    ],
+    "outcome_validation": [
+      "good_scalp_cycle",
+      "bad_churn_cycle",
+      "fee_burn_cycle",
+      "blocked_churn_cycles",
+      "retained_good_scalp_cycles",
+      "good_scalp_preservation_rate",
+      "false_block_risk"
+    ]
+  },
+  "telemetry_fields": [
+    {
+      "field": "candidate_id",
+      "type": "string",
+      "allowed_values": [
+        "pair_near_zero_memory_plus_book_guard",
+        "pair_toxic_memory_plus_book_guard",
+        "pair_same_symbol_repetition_net_brake"
+      ],
+      "required": true
+    },
+    {
+      "field": "candidate_status",
+      "type": "enum",
+      "allowed_values": [
+        "research_only_survivor",
+        "demoted_comparator"
+      ],
+      "required": true
+    },
+    {
+      "field": "pair_memory_state",
+      "type": "enum",
+      "allowed_values": [
+        "not_evaluated",
+        "no_memory",
+        "memory_present",
+        "memory_present_negative_pair_context",
+        "unknown"
+      ],
+      "required": true
+    },
+    {
+      "field": "near_zero_cluster_state",
+      "type": "enum",
+      "allowed_values": [
+        "not_applicable",
+        "absent",
+        "present",
+        "unknown"
+      ],
+      "required": true
+    },
+    {
+      "field": "toxic_pair_state",
+      "type": "enum",
+      "allowed_values": [
+        "not_applicable",
+        "absent",
+        "present",
+        "unknown"
+      ],
+      "required": true
+    },
+    {
+      "field": "book_guard_state",
+      "type": "enum",
+      "allowed_values": [
+        "not_evaluated",
+        "book_context_available",
+        "book_context_weak",
+        "book_context_ok",
+        "join_gap_flagged",
+        "missing"
+      ],
+      "required": true,
+      "note": "Descriptive offline state only; no threshold is defined in this contract."
+    },
+    {
+      "field": "confidence",
+      "type": "enum",
+      "allowed_values": [
+        "low",
+        "medium",
+        "high",
+        "unknown"
+      ],
+      "required": true
+    },
+    {
+      "field": "false_block_risk",
+      "type": "enum",
+      "allowed_values": [
+        "low",
+        "medium",
+        "high",
+        "unknown"
+      ],
+      "required": true
+    },
+    {
+      "field": "evidence_source",
+      "type": "object",
+      "required": true,
+      "shape": {
+        "artifact_path": "string",
+        "corpus_id": "string",
+        "window_id": "string",
+        "row_id": "string"
+      }
+    },
+    {
+      "field": "research_only_status",
+      "type": "enum",
+      "allowed_values": [
+        "research_only_no_runtime_binding",
+        "demoted_research_comparator",
+        "missing_required_telemetry"
+      ],
+      "required": true
+    },
+    {
+      "field": "validation_corpus_id",
+      "type": "string",
+      "allowed_values": [
+        "prior_23_saved",
+        "pmx_strict_7",
+        "expanded_prior23_plus_pmx7",
+        "future_offline_corpus"
+      ],
+      "required": false
+    },
+    {
+      "field": "l2_join_quality_state",
+      "type": "enum",
+      "allowed_values": [
+        "strict_joined",
+        "diagnostics_only_gap_flagged",
+        "missing",
+        "unknown"
+      ],
+      "required": false
+    },
+    {
+      "field": "telemetry_gap_reason",
+      "type": "array[string]",
+      "required": false
+    }
+  ],
+  "dashboard_panels": [
+    "candidate_summary_panel",
+    "pair_memory_state_panel",
+    "book_guard_evidence_panel",
+    "false_block_risk_panel",
+    "evidence_source_panel",
+    "missing_telemetry_panel"
+  ],
+  "offline_validation_required_before_demo_design": [
+    "broader_non_overlapping_oos_windows",
+    "strict_l2_joins_for_candidate_entries",
+    "stable_good_scalp_preservation_by_corpus_window_and_asset_side",
+    "false_block_risk_review_by_asset_side",
+    "overlap_removed_robustness_check",
+    "account_order_lifecycle_reconciliation",
+    "maker_taker_and_fee_tier_truth",
+    "expected_edge_and_runtime_decision_logs",
+    "skipped_entry_counterfactual_replay",
+    "explicit_matt_approval_for_separate_demo_design_work"
+  ],
+  "missing_telemetry_before_runtime_or_demo": [
+    "full_account_order_lifecycle",
+    "maker_taker_truth",
+    "fee_tier_truth",
+    "rebates_and_queue_position_context",
+    "runtime_decision_logs",
+    "expected_edge_logs",
+    "skipped_entry_counterfactuals",
+    "downstream_state_replay",
+    "funding_leverage_margin_liquidation_distance_account_equity_context",
+    "complete_order_intent_cancel_replace_partial_fill_close_reason_context",
+    "broader_non_overlapping_oos_windows",
+    "strict_join_quality_for_gap_flagged_windows",
+    "dashboard_ingestion_preserving_research_only_status"
+  ],
+  "archive_readiness": {
+    "output_saved_as_file_bundle_report": true,
+    "conductor_handoff_provided": true,
+    "unfinished_running_task": false,
+    "safe_to_archive_this_chat": true
+  }
+}

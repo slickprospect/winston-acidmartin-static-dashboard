@@ -1,0 +1,41 @@
+{
+  "bundle_id": "winston-mini-scalp-lab-2026-06-08.fixture.v1",
+  "created_at": "2026-06-08T17:42:00-04:00",
+  "artifact_type": "static_public_research_dashboard",
+  "project_scope": "dashboards_only",
+  "public_name": "Winston",
+  "target_future_subdomain": "winston.acidmartin.com",
+  "deployment_status": "planning_only_not_deployed_dns_not_configured",
+  "source_spec": "/Users/mattlloyd/Desktop/dashboards/docs/winston-mini-scalp-lab-dashboard-spec-2026-06-08.md",
+  "entrypoint": "index.html",
+  "files": [
+    "index.html",
+    "styles.css",
+    "fixture-data.js",
+    "app.js",
+    "replay-input-v1.js",
+    "replay-backtest-v0.js",
+    "mini_scalp_lane_pair_memory_guard_dashboard_telemetry_contract_v0_2026-06-11.json",
+    "winston_mini_scalp_lab_replay_input_v1_2026-06-09.json",
+    "winston_mini_scalp_lab_replay_backtest_v0_2026-06-09.json",
+    "winston_mini_scalp_lab_replay_backtest_v0_2026-06-09.md",
+    "source-index.json",
+    "freshness-report.json",
+    "manifest.json",
+    "README.md"
+  ],
+  "dependencies": [],
+  "preview": "Open index.html directly in a browser.",
+  "schema_validation": {
+    "runtime": "client-side fixture validator in app.js",
+    "required_fields": ["mode", "timestamp", "source", "freshness", "classification"],
+    "valid_classifications": ["research-only", "mock", "live-read-only"],
+    "offline_replay_input": "winston.mini_scalp_lab.replay_input.v1 copied into bundle as static screenshot-derived fixture",
+    "offline_replay_backtest": "winston.mini_scalp_lab.replay_backtest.v0 copied into bundle as static screenshot-derived fixture",
+    "pair_memory_guard_contract": "mini_scalp_lane_pair_memory_guard_dashboard_telemetry_contract_v0 copied into bundle as static research-only fixture",
+    "static_market_headlines": "fixture://winston/static-market-headlines with no live news API",
+    "demo_readiness_gates": "fixture://winston/demo-readiness-gates",
+    "deployment_readiness_notes": "fixture://winston/deployment-readiness-notes"
+  },
+  "guardrail_summary": "Fixture-only, read-only, research-only. No collectors, runtime mutation, Hyperliquid connection, live controls, trading settings, order behavior, or authority changes."
+}
