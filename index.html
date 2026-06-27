@@ -3,16 +3,82 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Winston - Public Research Dashboard Fixture</title>
-    <meta name="description" content="Static fixture-backed Winston research dashboard for Mini Scalp Lab replay/backtest v0. Research-only, no live controls, no trading authority.">
-    <link rel="stylesheet" href="./styles.css">
+    <title>Winston-Vault Cinematic HUD Terminal v0.3.1</title>
+    <link rel="stylesheet" href="styles.css">
   </head>
   <body>
-    <noscript>This static prototype requires JavaScript to render fixture cards. It does not connect to any network or runtime system.</noscript>
-    <main id="app" aria-label="Winston fixture prototype"></main>
-    <script src="./fixture-data.js"></script>
-    <script src="./replay-input-v1.js"></script>
-    <script src="./replay-backtest-v0.js"></script>
-    <script src="./app.js"></script>
+    <canvas id="hudBackdrop" aria-hidden="true"></canvas>
+    <div class="scanline" aria-hidden="true"></div>
+
+    <main class="terminal-shell" aria-label="Winston-Vault cinematic static terminal prototype">
+      <header class="topbar hud-frame">
+        <section class="brand-lockup" aria-label="Prototype identity">
+          <div class="brand-glyph" aria-hidden="true">WV</div>
+          <div>
+            <p class="kicker">Terminal Ops / Acid Martin</p>
+            <h1>Winston-Vault Market Opportunity Command Center</h1>
+          </div>
+        </section>
+        <section class="authority-strip" aria-label="Authority boundary">
+          <span>STATIC_DISPLAY_ONLY</span>
+          <span>NO_LIVE_POLLING</span>
+          <span>PAPER_ONLY / $0</span>
+          <span>NO_TRADING_AUTHORITY</span>
+          <span>NO_DEPLOY</span>
+        </section>
+        <section class="clock-stack" aria-label="Fixture timestamp">
+          <p class="kicker">Fixture State</p>
+          <strong id="fixtureTimestamp">loading</strong>
+        </section>
+      </header>
+
+      <section class="news-console" aria-label="Moving news headline lanes">
+        <div class="news-lane lane-macro" id="macroNewsLane"></div>
+        <div class="news-lane lane-crypto" id="cryptoNewsLane"></div>
+        <div class="news-lane lane-internal" id="internalNewsLane"></div>
+      </section>
+
+      <section class="command-grid">
+        <aside class="left-stack">
+          <section class="hud-panel live-strip" id="liveStateStrip" aria-label="BTC and ETH live-state strip"></section>
+          <section class="hud-panel" id="opportunityLane" aria-label="Winston opportunity lane panel"></section>
+          <section class="hud-panel" id="vaultGate" aria-label="Vault capital and readiness gate panel"></section>
+          <section class="hud-panel drawer-panel" id="signalDrawer" aria-label="Signal detail drawer"></section>
+        </aside>
+
+        <section class="core-column">
+          <section class="market-core hud-frame" id="marketCore" aria-label="Market core system pulse centerpiece">
+            <div class="core-orbit orbit-one" aria-hidden="true"></div>
+            <div class="core-orbit orbit-two" aria-hidden="true"></div>
+            <div class="core-orbit orbit-three" aria-hidden="true"></div>
+            <div class="core-spokes" aria-hidden="true"></div>
+            <div class="core-center">
+              <p class="kicker">Market Core</p>
+              <strong id="corePulseLabel">SYSTEM_PULSE</strong>
+              <span id="corePulseState">loading</span>
+            </div>
+            <div class="radial-node node-a" id="nodeFreshness"></div>
+            <div class="radial-node node-b" id="nodeRisk"></div>
+            <div class="radial-node node-c" id="nodeEvidence"></div>
+            <div class="radial-node node-d" id="nodeCapital"></div>
+          </section>
+
+          <section class="mid-panels">
+            <section class="hud-panel critical-panel" id="jobsCriticalPath" aria-label="July 2 Jobs critical-path panel"></section>
+            <section class="hud-panel factor-panel" id="factorRisk" aria-label="EF-RQ-001 factor risk panel"></section>
+          </section>
+        </section>
+
+        <aside class="right-stack">
+          <section class="hud-panel provider-panel" id="providerState" aria-label="EF-HERO provider and procurement state panel"></section>
+          <section class="hud-panel quarantine-panel" id="quarantinedStrategies" aria-label="Quarantined strategies panel"></section>
+          <section class="hud-panel alert-panel" id="alertQueue" aria-label="Alert queue"></section>
+          <section class="hud-panel drawer-panel" id="proofGraph" aria-label="Proof graph drawer"></section>
+        </aside>
+      </section>
+    </main>
+
+    <script src="fixtures/winston_vault_terminal_v0_3_1_fixture.js"></script>
+    <script src="app.js"></script>
   </body>
 </html>
